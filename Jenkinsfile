@@ -10,7 +10,7 @@ pipeline {
             }
           }
           steps {
-            sh './jenkins/build.sh'
+            sh './scripts/build.sh'
           }
           post {
             success {
@@ -25,10 +25,11 @@ pipeline {
             }
           }
           steps {
-            sh './jenkins/build.sh'
+            sh './scripts/build.sh'
           }
           post {
             success {
+            archiveArtifacts 'target/*.jar'
              stash(name: 'Java 17', includes: 'target/**')
             }
           }
