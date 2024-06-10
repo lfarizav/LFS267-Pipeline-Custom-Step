@@ -29,7 +29,8 @@ pipeline {
           }
           post {
             success {
-            postBuildSuccess(stashName: "Java 17")
+            archiveArtifacts 'target/*.jar'
+            stash(name: 'Java 17', includes: 'target/**')
             }
           }
         }
