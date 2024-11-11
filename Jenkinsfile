@@ -1,3 +1,4 @@
+@Library('shared-library') _
 pipeline {
   agent none
   stages {
@@ -29,8 +30,7 @@ pipeline {
           }
           post {
             success {
-            archiveArtifacts 'target/*.jar'
-            stash(name: 'Java 17', includes: 'target/**')
+              postBuildSuccess(stashName: "Java17")
             }
           }
         }
